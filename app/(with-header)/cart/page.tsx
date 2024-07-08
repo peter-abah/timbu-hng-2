@@ -44,7 +44,7 @@ export default function Cart() {
       <div className="stack gap-10">
         <ul>
           {PRODUCTS.map((product, i) => (
-            <li key={i} className="py-6 flex gap-20 border-b border-gray-1 first:border-t">
+            <li key={i} className="py-6 flex justify-between gap-20 border-b border-gray-1 first:border-t">
               <div className="flex gap-4">
                 <div className="bg-white p-4 rounded-xl border border-gray-2">
                   <Image src={product.image} alt={product.name} width={100} height={100} />
