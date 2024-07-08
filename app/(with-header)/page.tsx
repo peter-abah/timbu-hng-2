@@ -7,27 +7,27 @@ type Product = { name: string; price: number; image: string; category: string };
 const PRODUCTS: Record<string, Product[]> = {
   Smartwatches: [
     {
-      name: "Bluetooth Headphones",
+      name: "Stellar Gear",
       price: 50000,
-      image: "/images/bt-headphones.png",
+      image: "/images/stellar-gear.png",
       category: "Smartwatches",
     },
     {
-      name: "Bluetooth Headphones",
+      name: "Zenith Wave",
       price: 50000,
-      image: "/images/bt-headphones.png",
+      image: "/images/zenith-wave.png",
       category: "Smartwatches",
     },
     {
-      name: "Bluetooth Headphones",
+      name: "Fusion Chrono",
       price: 50000,
-      image: "/images/bt-headphones.png",
+      image: "/images/fusion-chrono.png",
       category: "Smartwatches",
     },
     {
-      name: "Bluetooth Headphones",
-      price: 50000,
-      image: "/images/bt-headphones.png",
+      name: "Quantum Pulse",
+      price: 52000,
+      image: "/images/quantum-pulse.png",
       category: "Smartwatches",
     },
   ],
@@ -39,21 +39,21 @@ const PRODUCTS: Record<string, Product[]> = {
       category: "Smartwatches",
     },
     {
-      name: "Bluetooth Headphones",
+      name: "Echo Flux",
       price: 50000,
-      image: "/images/bt-headphones.png",
+      image: "/images/echo-flux.png",
       category: "Smartwatches",
     },
     {
-      name: "Bluetooth Headphones",
+      name: "Sonic Breeze",
       price: 50000,
-      image: "/images/bt-headphones.png",
+      image: "/images/s-breeze.png",
       category: "Smartwatches",
     },
     {
-      name: "Bluetooth Headphones",
+      name: "Bass Surge",
       price: 50000,
-      image: "/images/bt-headphones.png",
+      image: "/images/b-surge.png",
       category: "Smartwatches",
     },
   ],
@@ -63,7 +63,7 @@ export default function Home() {
   return (
     <main className="max-w-[1000px] mx-auto my-[55px] flex flex-col gap-8">
       <header className="flex justify-between">
-        <h1 className="text-[2rem] text-semibold">Product Listing</h1>
+        <h1 className="text-[2rem] font-semibold">Product Listing</h1>
         <Link
           href="/cart"
           className="grid place-items-center w-10 h-10 rounded-full border-gray border bg-white relative"
@@ -87,9 +87,12 @@ export default function Home() {
                     <p className="font-semibold leading-none">{product.name}</p>
                     <p className="leading-none">{formatPrice(product.price)}</p>
                   </div>
-                  <button className="bg-purple text-white px-4 py-2.5 rounded-lg w-fit text-sm font-semibold">
+                  <Link
+                    href="/cart"
+                    className="bg-purple-3 text-white px-4 py-2.5 rounded-lg w-fit text-sm font-semibold"
+                  >
                     Add to cart
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
