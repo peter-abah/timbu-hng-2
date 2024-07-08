@@ -7,7 +7,16 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "bg-main": "rgb(var(--color-bg-main) / <alpha-value>)",
+        "gray-1": "rgb(var(--color-gray-1) / <alpha-value>)",
+        "gray-2": "rgb(var(--color-gray-2) / <alpha-value>)",
+        "gray-4": "rgb(var(--color-gray-4) / <alpha-value>)",
+        "gray-9": "rgb(var(--color-gray-9) / <alpha-value>)",
+        purple: "rgb(var(--color-purple) / <alpha-value>)",
+      },
+    },
   },
   plugins: [],
 };
