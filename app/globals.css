@@ -9,10 +9,12 @@
   --color-gray-4: 70 72 79;
   --color-gray-9: 25 25 27;
   --color-purple: 172 42 207;
+  --color-purple-3: 118 55 137;
 }
 
 body {
   background-color: rgb(var(--color-bg-main));
+  color: rgb(var(--color-gray-9));
 }
 
 @layer utilities {
