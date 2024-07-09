@@ -19,8 +19,9 @@ export default function ProductCard({ product }: Props) {
   const addToCart = () => {
     if (!isProductInCart) {
       _addToCart(product.id);
+    } else {
+      router.push("/cart");
     }
-    router.push("/cart");
   };
 
   return (

@@ -19,7 +19,7 @@ export default function Page() {
 
         <Link
           href="/"
-          className="px-4 py-2.5 bg-gray-3 text-white text-sm font-semibold rounded-lg text-center w-fit box-shadow-purple"
+          className="px-4 py-2.5 bg-gray-3 hover:bg-gray-3/60 text-white text-sm font-semibold rounded-lg text-center w-fit box-shadow-purple"
         >
           Continue shopping
         </Link>
