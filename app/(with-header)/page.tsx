@@ -19,7 +19,7 @@ export default function Home() {
         <h1 className="text-[2rem] font-semibold">Product Listing</h1>
         <Link
           href="/cart"
-          className="grid place-items-center w-10 h-10 rounded-full border-gray border bg-white relative"
+          className="grid place-items-center w-10 h-10 rounded-full border-gray border bg-white relative hover:box-shadow-purple"
         >
           <Image src={cartIcon} alt="" />
           {cartItemsNo > 0 && (

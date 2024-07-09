@@ -33,9 +33,13 @@ export default function Checkout() {
 
       <section className="px-[4.5rem] py-[78px] w-full bg-white gap-2">
         <div className="stack gap-1">
-          <Link href="/cart" className="flex gap-1 items-center">
-            <Image src={backIcon} alt="" />
-            <span className="text-purple">Back to cart</span>
+          <Link href="/cart" className="flex gap-1 items-center group">
+            <Image
+              src={backIcon}
+              alt=""
+              className="group-hover:-translate-x-1.5 transition-transform"
+            />
+            <span className="text-purple hover:underline">Back to cart</span>
           </Link>
           <h1 className="text-[32px] text-gray-9 font-semibold">Checkout</h1>
         </div>
@@ -48,13 +52,17 @@ export default function Checkout() {
               <input
                 type="email"
                 id="email"
-                className="rounded-lg border border-gray-2 py-3 px-4"
+                className="rounded-lg border border-gray-2 py-3 px-4 focus-visible:outline-purple-3"
               />
             </div>
 
             <div className="stack gap-2">
               <label htmlFor="phone">Your Phone Number</label>
-              <input type="text" id="phone" className="rounded-lg border border-gray-2 py-3 px-4" />
+              <input
+                type="text"
+                id="phone"
+                className="rounded-lg border border-gray-2 py-3 px-4 focus-visible:outline-purple-3"
+              />
             </div>
 
             <div className="stack gap-2">
@@ -62,7 +70,7 @@ export default function Checkout() {
               <input
                 type="text"
                 id="address"
-                className="rounded-lg border border-gray-2 py-3 px-4"
+                className="rounded-lg border border-gray-2 py-3 px-4 focus-visible:outline-purple-3"
               />
             </div>
           </div>
@@ -74,7 +82,7 @@ export default function Checkout() {
                 type="text"
                 id="card-no"
                 placeholder="**** **** 1234"
-                className="rounded-lg border border-gray-2 py-3 px-4 placeholder:text-current"
+                className="rounded-lg border border-gray-2 py-3 px-4 placeholder:text-current focus-visible:outline-purple-3"
               />
             </div>
 
@@ -85,7 +93,7 @@ export default function Checkout() {
                   type="text"
                   id="exp-date"
                   placeholder="MM/YY"
-                  className="rounded-lg border border-gray-2 py-3 px-4 placeholder:text-current"
+                  className="rounded-lg border border-gray-2 py-3 px-4 placeholder:text-current focus-visible:outline-purple-3"
                 />
               </div>
 
@@ -95,7 +103,7 @@ export default function Checkout() {
                   type="text"
                   id="cvv"
                   placeholder="CVV"
-                  className="rounded-lg border border-gray-2 py-3 px-4 placeholder:text-current"
+                  className="rounded-lg border border-gray-2 py-3 px-4 placeholder:text-current focus-visible:outline-purple-3"
                 />
               </div>
             </div>
@@ -105,14 +113,14 @@ export default function Checkout() {
               <input
                 type="password"
                 id="card-pin"
-                className="rounded-lg border border-gray-2 py-3 px-4"
+                className="rounded-lg border border-gray-2 py-3 px-4 focus-visible:outline-purple-3"
               />
             </div>
           </div>
 
           <Link
             href="/order-success"
-            className="px-4 py-3 bg-purple-3 text-white font-semibold rounded-lg text-center"
+            className="px-4 py-3 bg-purple-3 text-white font-semibold rounded-lg text-center hover:bg-purple-3/90 hover:box-shadow-purple"
           >
             Pay now
           </Link>

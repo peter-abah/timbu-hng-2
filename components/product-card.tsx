@@ -27,7 +27,7 @@ export default function ProductCard({ product }: Props) {
       </div>
       <button
         onClick={addToCart}
-        className="bg-purple-3 text-white px-4 py-2.5 rounded-lg w-fit text-sm font-semibold"
+        className="bg-purple-3 text-white px-4 py-2.5 rounded-lg w-fit text-sm font-semibold hover:box-shadow-purple hover:bg-purple-3/90 transition-all"
       >
         Add to cart
       </button>

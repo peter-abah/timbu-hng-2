@@ -17,9 +17,13 @@ export default function Cart() {
   return (
     <main className="w-full max-w-[676px] mx-auto my-6 bg-white py-6 px-[4.5rem] stack gap-4 rounded-3xl">
       <header className="stack gap-1">
-        <Link href="/" className="flex gap-1 items-center">
-          <Image src={backIcon} alt="" />
-          <span className="text-purple">Continue shopping</span>
+        <Link href="/" className="flex gap-1 items-center group">
+          <Image
+            src={backIcon}
+            alt=""
+            className="group-hover:-translate-x-1.5 transition-transform"
+          />
+          <span className="text-purple group-hover:underline">Continue shopping</span>
         </Link>
         <h1 className="text-[32px] text-gray-9 font-semibold">My Cart</h1>
       </header>
@@ -49,7 +53,7 @@ export default function Cart() {
 
           <Link
             href="/checkout"
-            className="px-4 py-3 bg-purple-3 text-white font-semibold rounded-lg text-center"
+            className="px-4 py-3 bg-purple-3 text-white font-semibold rounded-lg text-center hover:bg-purple-3/90 hover:box-shadow-purple"
           >
             Checkout
           </Link>
