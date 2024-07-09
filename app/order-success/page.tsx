@@ -7,7 +7,9 @@ export default function Page() {
     <main className="grid grow place-items-center">
       <div className="stack items-center">
         <div className="mb-10 border-[22px] rounded-full w-fit border-green-1/30">
-          <Image src={greenCheckIcon} alt="" />
+          <div className="relative w-44 md:w-[221px] aspect-square">
+            <Image src={greenCheckIcon} alt="" fill />
+          </div>
         </div>
 
         <div className="max-w-[392px] text-center mb-6">

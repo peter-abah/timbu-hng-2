@@ -25,13 +25,15 @@ export default function ProductCard({ product }: Props) {
   };
 
   return (
-    <li className="stack gap-2 w-fit">
+    <li className="stack gap-2 w-fit shrink-0">
       <div className="bg-white p-4 rounded-xl w-fit">
-        <Image src={product.image} alt={product.name} width={200} height={200} />
+        <div className="relative w-[140px] aspect-square lg:w-[200px]">
+          <Image src={product.image} alt={product.name} fill />
+        </div>
       </div>
       <div className="stack gap-1">
-        <p className="font-semibold leading-none">{product.name}</p>
-        <p className="leading-none">{formatPrice(product.price)}</p>
+        <p className="font-semibold leading-none text-sm md:text-base">{product.name}</p>
+        <p className="leading-none text-sm md:text-base">{formatPrice(product.price)}</p>
       </div>
       <button
         onClick={addToCart}
