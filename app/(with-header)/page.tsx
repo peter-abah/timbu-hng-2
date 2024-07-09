@@ -1,12 +1,14 @@
 "use client";
 
-import { formatPrice, groupBy } from "@/lib";
+import ProductCard from "@/components/product-card";
+import { groupBy } from "@/lib";
 import { useAppContext } from "@/lib/store-context";
 import cartIcon from "@/public/images/cart.svg";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  const cartItemsNo = useAppContext((state) => Object.values(state.cart.items).length);
   const products = useAppContext((state) => state.products);
   const productsByCategory = groupBy(products, (p) => p.category);
   const categories = Object.keys(productsByCategory);
@@ -20,7 +22,9 @@ export default function Home() {
           className="grid place-items-center w-10 h-10 rounded-full border-gray border bg-white relative"
         >
           <Image src={cartIcon} alt="" />
-          <span className="absolute top-0 right-0 w-2.5 h-2.5 rounded-full bg-purple"></span>
+          {cartItemsNo > 0 && (
+            <span className="absolute top-0 right-0 w-2.5 h-2.5 rounded-full bg-purple"></span>
+          )}
         </Link>
       </header>
 
@@ -30,21 +34,7 @@ export default function Home() {
             <h2 className="text-gray-4 text-xl font-semibold">{category}</h2>
             <ul className="flex gap-8">
               {productsByCategory[category].map((product, i) => (
-                <li key={i} className="stack gap-2 w-fit">
-                  <div className="bg-white p-4 rounded-xl w-fit">
-                    <Image src={product.image} alt={product.name} width={200} height={200} />
-                  </div>
-                  <div className="stack gap-1">
-                    <p className="font-semibold leading-none">{product.name}</p>
-                    <p className="leading-none">{formatPrice(product.price)}</p>
-                  </div>
-                  <Link
-                    href="/cart"
-                    className="bg-purple-3 text-white px-4 py-2.5 rounded-lg w-fit text-sm font-semibold"
-                  >
-                    Add to cart
-                  </Link>
-                </li>
+                <ProductCard key={product.name} product={product} />
               ))}
             </ul>
           </div>

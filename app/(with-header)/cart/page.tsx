@@ -1,38 +1,21 @@
+"use client";
+
 import { formatPrice } from "@/lib";
-import addIcon from "@/public/images/add.svg";
+import { useAppContext } from "@/lib/store-context";
 import backIcon from "@/public/images/back.svg";
-import deleteIcon from "@/public/images/delete.svg";
-import subtractIcon from "@/public/images/subtract.svg";
+
+import CartProduct from "@/components/cart-product";
 import Image from "next/image";
 import Link from "next/link";
 
-const PRODUCTS = [
-  {
-    name: "Bluetooth Headphones",
-    price: 50000,
-    image: "/images/bt-headphones.png",
-    category: "Smartwatches",
-    quantity: 2,
-  },
-  {
-    name: "Echo Flux",
-    price: 50000,
-    image: "/images/echo-flux.png",
-    category: "Smartwatches",
-    quantity: 2,
-  },
-  {
-    name: "Sonic Breeze",
-    price: 50000,
-    image: "/images/s-breeze.png",
-    category: "Smartwatches",
-    quantity: 2,
-  },
-];
-
 export default function Cart() {
+  const cart = useAppContext((state) => state.cart);
+  const deliveryFee = useAppContext((state) => state.deliveryFee);
+  const products = Object.values(cart.items);
+  const subtotal = products.reduce((res, curr) => res + curr.price * curr.quantity, 0);
+
   return (
-    <main className="w-fit mx-auto my-6 bg-white py-6 px-[4.5rem] stack gap-4 rounded-3xl">
+    <main className="w-full max-w-[676px] mx-auto my-6 bg-white py-6 px-[4.5rem] stack gap-4 rounded-3xl">
       <header className="stack gap-1">
         <Link href="/" className="flex gap-1 items-center">
           <Image src={backIcon} alt="" />
@@ -41,65 +24,41 @@ export default function Cart() {
         <h1 className="text-[32px] text-gray-9 font-semibold">My Cart</h1>
       </header>
 
-      <div className="stack gap-10">
-        <ul>
-          {PRODUCTS.map((product, i) => (
-            <li key={i} className="py-6 flex justify-between gap-20 border-b border-gray-1 first:border-t">
-              <div className="flex gap-4">
-                <div className="bg-white p-4 rounded-xl border border-gray-2">
-                  <Image src={product.image} alt={product.name} width={100} height={100} />
-                </div>
-                <div className="stack justify-between">
-                  <div className="stack gap-1">
-                    <p className="text-sm">{product.category}</p>
-                    <p className="text-xl font-semibold">{product.name}</p>
-                  </div>
+      {products.length > 0 ? (
+        <div className="stack gap-10">
+          <ul>
+            {products.map((product, i) => (
+              <CartProduct key={product.id} product={product} />
+            ))}
+          </ul>
 
-                  <div className="flex gap-1 px-2 items-center border border-gray-2 rounded-lg w-fit">
-                    <button aria-label="Decrease quantity">
-                      <Image src={subtractIcon} alt="" />
-                    </button>
-                    <p className="py-2 px-2.5 font-semibold text-xl">{product.quantity}</p>
-                    <button aria-label="Increase quantity">
-                      <Image src={addIcon} alt="" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <div className="stack gap-4">
+            <p className="flex justify-between text-xl">
+              <span>Subtotal</span>
+              <span>{formatPrice(subtotal)}</span>
+            </p>
+            <p className="flex justify-between text-xl">
+              <span>Delivery fee</span>
+              <span>{formatPrice(deliveryFee)}</span>
+            </p>
+            <p className="flex justify-between text-xl font-semibold">
+              <span>Total</span>
+              <span>{formatPrice(subtotal + deliveryFee)}</span>
+            </p>
+          </div>
 
-              <div className="stack justify-between items-end">
-                <button>
-                  <Image src={deleteIcon} alt="" />
-                </button>
-
-                <p className="font-semibold text-xl">{formatPrice(product.price)}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-
-        <div className="stack gap-4">
-          <p className="flex justify-between text-xl">
-            <span>Subtotal</span>
-            <span>₦150,000</span>
-          </p>
-          <p className="flex justify-between text-xl">
-            <span>Delivery fee</span>
-            <span>₦1,000</span>
-          </p>
-          <p className="flex justify-between text-xl font-semibold">
-            <span>Total</span>
-            <span>₦151,000</span>
-          </p>
+          <Link
+            href="/checkout"
+            className="px-4 py-3 bg-purple-3 text-white font-semibold rounded-lg text-center"
+          >
+            Checkout
+          </Link>
         </div>
-
-        <Link
-          href="/checkout"
-          className="px-4 py-3 bg-purple-3 text-white font-semibold rounded-lg text-center"
-        >
-          Checkout
-        </Link>
-      </div>
+      ) : (
+        <div className="py-40">
+          <p className="text-center text-gray-4 text-2xl">Nothing in cart yet.</p>
+        </div>
+      )}
     </main>
   );
 }

@@ -1,9 +1,9 @@
 import { createStore } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
-type Product = { id: string; name: string; price: number; image: string; category: string };
-type ProductWithQuantity = Product & { quantity: number };
-type Cart = { items: Record<string, ProductWithQuantity> };
+export type Product = { id: string; name: string; price: number; image: string; category: string };
+export type ProductWithQuantity = Product & { quantity: number };
+export type Cart = { items: Record<string, ProductWithQuantity> };
 
 const PRODUCTS: Product[] = [
   {
@@ -64,9 +64,12 @@ const PRODUCTS: Product[] = [
   },
 ];
 
+const DELIVERY_FEE = 1000;
+
 export type AppState = {
   products: Product[];
   cart: Cart;
+  deliveryFee: number;
   addToCart: (productID: string) => void;
   removeFromCart: (productID: string) => void;
   updateCartQuantity: (productID: string, quantity: number) => void;
@@ -77,6 +80,7 @@ export const createAppStore = () => {
     immer((set) => ({
       products: PRODUCTS,
       cart: { items: {} },
+      deliveryFee: DELIVERY_FEE,
       addToCart: (productID) => {
         set((state) => {
           if (state.cart.items[productID]) {
@@ -85,7 +89,7 @@ export const createAppStore = () => {
             const product = state.products.find(({ id }) => id === productID);
             if (!product) return;
 
-            state.cart.items[productID] = { ...product, quantity: 0 };
+            state.cart.items[productID] = { ...product, quantity: 1 };
           }
         });
       },
