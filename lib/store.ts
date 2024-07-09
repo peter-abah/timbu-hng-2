@@ -73,6 +73,7 @@ export type AppState = {
   addToCart: (productID: string) => void;
   removeFromCart: (productID: string) => void;
   updateCartQuantity: (productID: string, quantity: number) => void;
+  clearCart: () => void;
 };
 
 export const createAppStore = () => {
@@ -103,6 +104,12 @@ export const createAppStore = () => {
           if (state.cart.items[productID]) {
             state.cart.items[productID].quantity = quantity;
           }
+        });
+      },
+
+      clearCart: () => {
+        set((state) => {
+          state.cart.items = {};
         });
       },
     }))
