@@ -1,65 +1,16 @@
-import { formatPrice } from "@/lib";
+"use client";
+
+import { formatPrice, groupBy } from "@/lib";
+import { useAppContext } from "@/lib/store-context";
 import cartIcon from "@/public/images/cart.svg";
 import Image from "next/image";
 import Link from "next/link";
 
-type Product = { name: string; price: number; image: string; category: string };
-const PRODUCTS: Record<string, Product[]> = {
-  Smartwatches: [
-    {
-      name: "Stellar Gear",
-      price: 50000,
-      image: "/images/stellar-gear.png",
-      category: "Smartwatches",
-    },
-    {
-      name: "Zenith Wave",
-      price: 50000,
-      image: "/images/zenith-wave.png",
-      category: "Smartwatches",
-    },
-    {
-      name: "Fusion Chrono",
-      price: 50000,
-      image: "/images/fusion-chrono.png",
-      category: "Smartwatches",
-    },
-    {
-      name: "Quantum Pulse",
-      price: 52000,
-      image: "/images/quantum-pulse.png",
-      category: "Smartwatches",
-    },
-  ],
-  "Headphones and Airpods": [
-    {
-      name: "Bluetooth Headphones",
-      price: 50000,
-      image: "/images/bt-headphones.png",
-      category: "Smartwatches",
-    },
-    {
-      name: "Echo Flux",
-      price: 50000,
-      image: "/images/echo-flux.png",
-      category: "Smartwatches",
-    },
-    {
-      name: "Sonic Breeze",
-      price: 50000,
-      image: "/images/s-breeze.png",
-      category: "Smartwatches",
-    },
-    {
-      name: "Bass Surge",
-      price: 50000,
-      image: "/images/b-surge.png",
-      category: "Smartwatches",
-    },
-  ],
-};
 export default function Home() {
-  const categories = Object.keys(PRODUCTS);
+  const products = useAppContext((state) => state.products);
+  const productsByCategory = groupBy(products, (p) => p.category);
+  const categories = Object.keys(productsByCategory);
+
   return (
     <main className="max-w-[1000px] mx-auto my-[55px] flex flex-col gap-8">
       <header className="flex justify-between">
@@ -78,7 +29,7 @@ export default function Home() {
           <div key={category} className="flex flex-col gap-4">
             <h2 className="text-gray-4 text-xl font-semibold">{category}</h2>
             <ul className="flex gap-8">
-              {PRODUCTS[category].map((product, i) => (
+              {productsByCategory[category].map((product, i) => (
                 <li key={i} className="stack gap-2 w-fit">
                   <div className="bg-white p-4 rounded-xl w-fit">
                     <Image src={product.image} alt={product.name} width={200} height={200} />

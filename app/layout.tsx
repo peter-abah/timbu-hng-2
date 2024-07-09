@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import { AppStoreProvider } from "@/lib/store-context";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -16,8 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} stack min-h-screen`}>{children}</body>
-    </html>
+    <AppStoreProvider>
+      <html lang="en">
+        <body className={`${inter.className} stack min-h-screen`}>{children}</body>
+      </html>
+    </AppStoreProvider>
   );
 }
