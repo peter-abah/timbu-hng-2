@@ -30,9 +30,9 @@ export default function ProductCard({ product }: Props) {
   const imageLink = `${API_IMAGE_ROOT_URL}/${product.photos[0].url}`;
 
   return (
-    <li className="stack gap-2 shrink-0">
-      <Link href={`/products/${product.id}`} className="bg-white p-4 rounded-xl w-fit">
-        <div className="relative w-[140px] aspect-square lg:w-[200px]">
+    <li className="stack gap-2 w-full">
+      <Link href={`/products/${product.id}`} className="bg-white p-4 rounded-xl w-full">
+        <div className="relative w-full aspect-square">
           <Image src={imageLink} alt={product.name} fill />
         </div>
       </Link>

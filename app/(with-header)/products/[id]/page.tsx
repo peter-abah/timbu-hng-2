@@ -1,5 +1,5 @@
 import { fetchProducts } from "@/lib/timbu";
-import Product from "../product";
+import Product from "./product";
 
 export async function generateStaticParams() {
   const { items: products } = await fetchProducts();

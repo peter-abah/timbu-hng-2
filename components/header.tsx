@@ -16,7 +16,7 @@ export default function Header({ className }: Props) {
     <header
       className={clsx(
         className,
-        "flex items-center justify-between md:justify-center px-6 py-3 md:py-8 border-b border-gray-1"
+        "sticky top-0 z-50 bg-bg-main flex items-center justify-between md:justify-center px-12 py-3 lg:py-8 border-b border-gray-1"
       )}
     >
       <Link href="/" className="font-semibold text-xl text-purple-3">

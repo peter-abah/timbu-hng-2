@@ -5,7 +5,6 @@ import { useAppContext } from "@/lib/store-context";
 import backIcon from "@/public/images/back.svg";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -49,7 +48,7 @@ export default function CheckoutForm() {
   return (
     <section className="px-6 min-h-screen md:px-[4.5rem] pt-2 pb-14 md:py-[78px] w-full bg-white gap-2 stack">
       <header className="stack gap-1">
-        <Link href="/cart" className="flex gap-0.5 md:gap-1 items-center group">
+        <button onClick={() => router.back()} className="flex gap-0.5 md:gap-1 items-center group">
           <Image
             src={backIcon}
             alt=""
@@ -58,7 +57,7 @@ export default function CheckoutForm() {
           <span className="text-xs md:text-base text-purple group-hover:underline">
             Back to cart
           </span>
-        </Link>
+        </button>
         <h1 className="text-xl md:text-[32px] text-gray-9 font-semibold">Checkout</h1>
       </header>
 

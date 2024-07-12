@@ -35,7 +35,7 @@ export default function Product({ product }: { product: Product }) {
   };
 
   return (
-    <main className="w-full lg:w-[1072px] mx-auto stack gap-4 md:my-[55px] p-12 bg-white rounded-3xl">
+    <main className="w-full lg:w-[1072px] mx-auto stack gap-4 lg:my-[55px] p-6 md:p-12 bg-white lg:rounded-3xl">
       <header className="flex gap-8 justify-between">
         <button onClick={() => router.back()} className="flex gap-0.5 md:gap-1 items-center group">
           <Image
@@ -46,10 +46,12 @@ export default function Product({ product }: { product: Product }) {
           <span className="text-xs md:text-base text-purple group-hover:underline">Back</span>
         </button>
 
-        <CartButton />
+        <div className="hidden md:block">
+          <CartButton />
+        </div>
       </header>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="stack md:grid grid-cols-2 gap-8">
         <ProductImageSlider product={product} />
 
         <div className="stack gap-6">
