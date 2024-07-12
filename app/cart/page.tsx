@@ -13,7 +13,10 @@ export default function Cart() {
   const cart = useAppContext((state) => state.cart);
   const deliveryFee = useAppContext((state) => state.deliveryFee);
   const products = Object.values(cart.items);
-  const subtotal = products.reduce((res, curr) => res + curr.price * curr.quantity, 0);
+  const subtotal = products.reduce(
+    (res, curr) => res + curr.current_price[0].NGN[0] * curr.quantity,
+    0
+  );
 
   return (
     <>

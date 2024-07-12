@@ -1,6 +1,7 @@
 import { formatPrice } from "@/lib";
 import { ProductWithQuantity } from "@/lib/store";
 import { useAppContext } from "@/lib/store-context";
+import { API_IMAGE_ROOT_URL } from "@/lib/timbu/constants";
 import addIcon from "@/public/images/add.svg";
 import deleteIcon from "@/public/images/delete.svg";
 import subtractIcon from "@/public/images/subtract.svg";
@@ -26,13 +27,14 @@ export default function CartProduct({ product }: Props) {
       updateCartQuantity(product.id, product.quantity - 1);
     }
   };
+  const imageLink = `${API_IMAGE_ROOT_URL}/${product.photos[0].url}`;
 
   return (
     <li className="py-4 md:py-6 flex justify-between border-b border-gray-1 first:border-t">
       <div className="flex gap-2.5 md:gap-4">
         <div className="bg-white p-4 rounded-xl border border-gray-1 shrink-0">
           <div className="relative w-[70px] aspect-square md:w-[100px]">
-          <Image src={product.image} alt={product.name} fill />
+            <Image src={imageLink} alt={product.name} fill />
           </div>
         </div>
         <div className="stack justify-between shrink-0">
@@ -69,7 +71,7 @@ export default function CartProduct({ product }: Props) {
           <Image src={deleteIcon} alt="" />
         </button>
 
-        <p className="font-semibold md:text-xl">{formatPrice(product.price)}</p>
+        <p className="font-semibold md:text-xl">{formatPrice(product.current_price[0].NGN[0])}</p>
       </div>
     </li>
   );

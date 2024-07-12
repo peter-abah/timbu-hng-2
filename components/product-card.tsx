@@ -1,6 +1,8 @@
+"use client";
 import { formatPrice } from "@/lib";
-import { Product } from "@/lib/store";
 import { useAppContext } from "@/lib/store-context";
+import { API_IMAGE_ROOT_URL } from "@/lib/timbu/constants";
+import { Product } from "@/lib/timbu/types";
 import checkIcon from "@/public/images/check.svg";
 import clsx from "clsx";
 import Image from "next/image";
@@ -18,22 +20,26 @@ export default function ProductCard({ product }: Props) {
 
   const addToCart = () => {
     if (!isProductInCart) {
-      _addToCart(product.id);
+      _addToCart(product);
     } else {
       router.push("/cart");
     }
   };
 
+  const imageLink = `${API_IMAGE_ROOT_URL}/${product.photos[0].url}`;
+
   return (
-    <li className="stack gap-2 w-fit shrink-0">
+    <li className="stack gap-2 shrink-0">
       <div className="bg-white p-4 rounded-xl w-fit">
         <div className="relative w-[140px] aspect-square lg:w-[200px]">
-          <Image src={product.image} alt={product.name} fill />
+          <Image src={imageLink} alt={product.name} fill />
         </div>
       </div>
       <div className="stack gap-1">
-        <p className="font-semibold leading-none text-sm md:text-base">{product.name}</p>
-        <p className="leading-none text-sm md:text-base">{formatPrice(product.price)}</p>
+        <p className="font-semibold leading-none text-sm md:text-base truncate">{product.name}</p>
+        <p className="leading-none text-sm md:text-base">
+          {formatPrice(product.current_price[0].NGN[0])}
+        </p>
       </div>
       <button
         onClick={addToCart}
