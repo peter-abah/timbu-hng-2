@@ -6,6 +6,7 @@ import { Product } from "@/lib/timbu/types";
 import checkIcon from "@/public/images/check.svg";
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -30,13 +31,19 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <li className="stack gap-2 shrink-0">
-      <div className="bg-white p-4 rounded-xl w-fit">
+      <Link href={`/products/${product.id}`} className="bg-white p-4 rounded-xl w-fit">
         <div className="relative w-[140px] aspect-square lg:w-[200px]">
           <Image src={imageLink} alt={product.name} fill />
         </div>
-      </div>
+      </Link>
+
       <div className="stack gap-1">
-        <p className="font-semibold leading-none text-sm md:text-base truncate">{product.name}</p>
+        <Link
+          href={`/products/${product.id}`}
+          className="font-semibold leading-none text-sm md:text-base truncate"
+        >
+          {product.name}
+        </Link>
         <p className="leading-none text-sm md:text-base">
           {formatPrice(product.current_price[0].NGN[0])}
         </p>

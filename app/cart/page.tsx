@@ -8,6 +8,7 @@ import CartProduct from "@/components/cart-product";
 import Header from "@/components/header";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Cart() {
   const cart = useAppContext((state) => state.cart);
@@ -17,6 +18,7 @@ export default function Cart() {
     (res, curr) => res + curr.current_price[0].NGN[0] * curr.quantity,
     0
   );
+  const router = useRouter();
 
   return (
     <>
@@ -24,7 +26,10 @@ export default function Cart() {
 
       <main className="w-full md:max-w-[676px] min-h-screen md:min-h-auto mx-auto md:my-6 bg-white p-6 md:px-[4.5rem] stack gap-4 md:rounded-3xl">
         <header className="stack gap-1">
-          <Link href="/" className="flex gap-0.5 md:gap-1 items-center group">
+          <button
+            onClick={() => router.back()}
+            className="flex gap-0.5 md:gap-1 items-center group"
+          >
             <Image
               src={backIcon}
               alt=""
@@ -33,7 +38,7 @@ export default function Cart() {
             <span className="text-xs md:text-base text-purple group-hover:underline">
               Continue shopping
             </span>
-          </Link>
+          </button>
           <h1 className="text-xl md:text-[32px] text-gray-9 font-semibold">My Cart</h1>
         </header>
 

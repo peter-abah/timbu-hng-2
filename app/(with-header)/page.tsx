@@ -4,6 +4,7 @@ import { fetchProducts } from "@/lib/timbu";
 
 export default async function Home() {
   const { page, previous_page, next_page, items: products } = await fetchProducts();
+  // TODO: pagination and category grouping
   // const productsByCategory = groupBy(products, (p) => p.category);
   // const categories = Object.keys(productsByCategory);
 

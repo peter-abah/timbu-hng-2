@@ -2,7 +2,7 @@ export type Product = {
   id: string;
   name: string;
   description?: string;
-  category: undefined; // TODO: Remove if you can't add category
+  categories: { name: string }[];
   photos: Array<{
     url: string;
     position: string;

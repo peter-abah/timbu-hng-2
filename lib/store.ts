@@ -8,7 +8,7 @@ export type Cart = { items: Record<string, ProductWithQuantity> };
 export type AppState = {
   cart: Cart;
   deliveryFee: number;
-  addToCart: (product: Product) => void;
+  addToCart: (product: Product, quantity?: number) => void;
   removeFromCart: (productID: string) => void;
   updateCartQuantity: (productID: string, quantity: number) => void;
   clearCart: () => void;
@@ -21,12 +21,12 @@ export const createAppStore = () => {
     immer((set) => ({
       cart: { items: {} },
       deliveryFee: DELIVERY_FEE,
-      addToCart: (product) => {
+      addToCart: (product, quantity = 1) => {
         set((state) => {
           if (state.cart.items[product.id]) {
             state.cart.items[product.id].quantity += 1;
           } else {
-            state.cart.items[product.id] = { ...product, quantity: 1 };
+            state.cart.items[product.id] = { ...product, quantity };
           }
         });
       },
