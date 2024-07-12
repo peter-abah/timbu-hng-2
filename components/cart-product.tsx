@@ -79,7 +79,9 @@ export default function CartProduct({ product }: Props) {
           <Image src={deleteIcon} alt="" />
         </button>
 
-        <p className="font-semibold md:text-xl">{formatPrice(product.current_price[0].NGN[0])}</p>
+        <p className="font-semibold md:text-xl">
+          {formatPrice(product.current_price[0].NGN[0] * product.quantity)}
+        </p>
       </div>
     </li>
   );
