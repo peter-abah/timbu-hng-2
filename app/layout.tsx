@@ -4,11 +4,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 
-// TODO: metadata
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Timbu",
+  title: {
+    template: '%s | Timbu',
+    default: 'Timbu', // a default is required when creating a template
+  },
   description: "Timbu eccomerce store",
 };
 
