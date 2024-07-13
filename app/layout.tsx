@@ -1,9 +1,10 @@
 import "@/app/globals.css";
 import { AppStoreProvider } from "@/lib/store-context";
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
+// TODO: metadata
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,7 +20,10 @@ export default function RootLayout({
   return (
     <AppStoreProvider>
       <html lang="en">
-        <body className={`${inter.className} stack min-h-screen`}>{children}</body>
+        <body className={`${inter.className} stack min-h-screen`}>
+          {children}
+          <Toaster />
+        </body>
       </html>
     </AppStoreProvider>
   );

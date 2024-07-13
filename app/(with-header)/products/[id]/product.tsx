@@ -10,10 +10,11 @@ import backIcon from "@/public/images/back.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function Product({ product }: { product: Product }) {
   const { name, current_price, description, categories } = product;
-  const [_addToCart, updateCartQuantity, removeFromCart] = useAppContext(
+  const [_addToCart, updateCartQuantity, _removeFromCart] = useAppContext(
     ({ addToCart, updateCartQuantity, removeFromCart }) => [
       addToCart,
       updateCartQuantity,
@@ -28,9 +29,17 @@ export default function Product({ product }: { product: Product }) {
   const addToCart = () => {
     if (!isProductInCart) {
       _addToCart(product, quantity);
+      toast.success("Product added to cart");
     } else {
       updateCartQuantity(product.id, quantity);
+      toast.success("Product cart quantity updated");
     }
+  };
+
+  const removeFromCart = () => {
+    _removeFromCart(product.id);
+    setQuantity(1);
+    toast.success("Product removed from cart");
   };
 
   return (
@@ -88,7 +97,7 @@ export default function Product({ product }: { product: Product }) {
             </button>
             {isProductInCart && (
               <button
-                onClick={() => removeFromCart(product.id)}
+                onClick={removeFromCart}
                 className="px-4 py-3 bg-orange-700 text-white font-semibold rounded-lg text-center hover:bg-orange-700/90 hover:box-shadow-purple"
               >
                 Remove from cart
