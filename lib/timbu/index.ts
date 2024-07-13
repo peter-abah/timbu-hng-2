@@ -15,7 +15,9 @@ const transformProduct = (product: ProductData) => {
   const result = {
     ...product,
     current_price:
-      typeof product.current_price === "number" ? product.current_price : product.current_price,
+      typeof product.current_price === "number"
+        ? product.current_price
+        : product.current_price[0].NGN[0],
   };
   return result as Product;
 };
