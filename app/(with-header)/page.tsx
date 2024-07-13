@@ -7,13 +7,15 @@ import { fetchProducts } from "@/lib/timbu";
 const PAGE_SIZE = 10;
 
 // TODO: Make category grouping styling better
-// TODO: Fix styling of  product grid 
+// TODO: Fix styling of  product grid
 export default async function Home({ searchParams }: { searchParams: { page?: string } }) {
   const {
     page,
     previous_page,
     next_page,
     items: products,
+    total,
+    size,
   } = await fetchProducts({ page: searchParams.page || 1, size: PAGE_SIZE });
   const productsByCategory = groupBy(products, (p) => p.categories[0]?.name || "uncategorized");
   const categories = Object.keys(productsByCategory);
@@ -37,7 +39,13 @@ export default async function Home({ searchParams }: { searchParams: { page?: st
           </div>
         ))}
 
-        <Pagination isNextPage={!!next_page} isPrevPage={!!previous_page} page={page} />
+        <Pagination
+          isNextPage={!!next_page}
+          isPrevPage={!!previous_page}
+          page={page}
+          total={total}
+          size={size}
+        />
       </section>
     </main>
   );

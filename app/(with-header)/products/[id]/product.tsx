@@ -11,7 +11,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-// TODO: handle error pages
 export default function Product({ product }: { product: Product }) {
   const { name, current_price, description, categories } = product;
   const [_addToCart, updateCartQuantity, removeFromCart] = useAppContext(
