@@ -5,14 +5,14 @@ import ProductImageSlider from "@/components/product-image-slider";
 import QuantitySelector from "@/components/quantity-selector";
 import { formatPrice, titleCase } from "@/lib";
 import { useAppContext } from "@/lib/store-context";
-import { Product } from "@/lib/timbu/types";
+import { type Product as TProduct } from "@/lib/timbu/types";
 import backIcon from "@/public/images/back.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-export default function Product({ product }: { product: Product }) {
+export default function Product({ product }: { product: TProduct }) {
   const { name, current_price, description, categories } = product;
   const [_addToCart, updateCartQuantity, _removeFromCart] = useAppContext(
     ({ addToCart, updateCartQuantity, removeFromCart }) => [
