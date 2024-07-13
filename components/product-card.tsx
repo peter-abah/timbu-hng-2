@@ -45,7 +45,7 @@ export default function ProductCard({ product }: Props) {
           {product.name}
         </Link>
         <p className="leading-none text-sm md:text-base">
-          {formatPrice(product.current_price[0].NGN[0])}
+          {formatPrice(product.current_price)}
         </p>
       </div>
       <button

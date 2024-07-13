@@ -42,6 +42,7 @@ export default function Product({ product }: { product: TProduct }) {
     toast.success("Product removed from cart");
   };
 
+
   return (
     <main className="w-full lg:w-[1072px] mx-auto stack gap-4 lg:my-[55px] p-6 md:p-12 bg-white lg:rounded-3xl">
       <header className="flex gap-8 justify-between">
@@ -69,7 +70,7 @@ export default function Product({ product }: { product: TProduct }) {
               <p className="text-sm md:text-base opacity-70">{titleCase(categories[0].name)}</p>
             )}
             <h1 className="text-[2rem] font-semibold">{name}</h1>
-            <p className="text-xl">{formatPrice(current_price[0].NGN[0])}</p>
+            <p className="text-xl">{formatPrice(current_price)}</p>
           </div>
 
           <details className="stack gap-2">

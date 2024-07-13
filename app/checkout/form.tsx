@@ -36,7 +36,7 @@ export default function CheckoutForm() {
   const deliveryFee = useAppContext((state) => state.deliveryFee);
   const products = Object.values(cart.items);
   const subtotal = products.reduce(
-    (res, curr) => res + curr.current_price[0].NGN[0] * curr.quantity,
+    (res, curr) => res + curr.current_price * curr.quantity,
     0
   );
 

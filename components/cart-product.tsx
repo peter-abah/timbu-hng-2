@@ -80,7 +80,7 @@ export default function CartProduct({ product }: Props) {
         </button>
 
         <p className="font-semibold md:text-xl">
-          {formatPrice(product.current_price[0].NGN[0] * product.quantity)}
+          {formatPrice(product.current_price * product.quantity)}
         </p>
       </div>
     </li>

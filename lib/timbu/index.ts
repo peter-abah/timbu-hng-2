@@ -1,13 +1,25 @@
 import { API_ROOT_URL, DEFAULT_PARAMS } from "./constants";
-import { Product } from "./types";
+import { Product, ProductData } from "./types";
 
-type ProductsResult = {
+type ProductsData = {
   page: number;
   size: number;
   total: number;
   previous_page: string | null;
   next_page: string | null;
-  items: Product[];
+  items: ProductData[];
+};
+
+const transformProduct = (product: ProductData) => {
+  // harmonize type current price to number
+  const result = {
+    ...product,
+    current_price:
+      typeof product.current_price === "number"
+        ? product.current_price
+        : product.current_price,
+  };
+  return result as Product;
 };
 
 export const fetchProducts = async (extraParams: Record<string, any> = {}) => {
@@ -18,8 +30,8 @@ export const fetchProducts = async (extraParams: Record<string, any> = {}) => {
     throw Error("Error fetching products");
   }
 
-  const data = (await res.json()) as ProductsResult;
-  return data;
+  const data = (await res.json()) as ProductsData;
+  return { ...data, items: data.items.map(transformProduct) };
 };
 
 export const fetchProduct = async (productId: string) => {
@@ -31,5 +43,7 @@ export const fetchProduct = async (productId: string) => {
   }
 
   const data = (await res.json()) as Product | null;
-  return data;
+  if (!data) return null;
+
+  return transformProduct(data);
 };
