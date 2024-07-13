@@ -7,7 +7,6 @@ export async function generateStaticParams() {
   return products.map(({ id }) => ({ id }));
 }
 
-// TODO: handle error pages
 export default async function Page({ params: { id } }: { params: { id: string } }) {
   // For some reason the current_price field in the product is null when I use the GET product endpoint,
   // while the current_price is available when GET products endpoint is used.
