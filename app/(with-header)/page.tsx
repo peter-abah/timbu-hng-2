@@ -6,8 +6,7 @@ import { fetchProducts } from "@/lib/timbu";
 
 const PAGE_SIZE = 10;
 
-// TODO: Make category grouping styling better
-// TODO: Fix styling of  product grid
+// TODO: Make category grouping styling better (maybe)
 export default async function Home({ searchParams }: { searchParams: { page?: string } }) {
   const {
     page,
@@ -31,7 +30,7 @@ export default async function Home({ searchParams }: { searchParams: { page?: st
         {categories.map((category) => (
           <div key={category} className="flex flex-col gap-4">
             <h2 className="text-gray-4 md:text-xl font-semibold">{titleCase(category)}</h2>
-            <ul className="overflow-x-auto shrink grow-0 gap-8 md:gap-8 grid grid-cols-[repeat(auto-fit,_minmax(172px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(232px,_1fr))] xl:grid-cols-[repeat(4,_minmax(232px,_1fr))] justify-center justify-items-center">
+            <ul className="overflow-x-auto shrink grow-0 gap-8 md:gap-8 grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {productsByCategory[category].map((product, i) => (
                 <ProductCard key={product.name} product={product} />
               ))}
