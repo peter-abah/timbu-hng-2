@@ -1,4 +1,5 @@
 import { fetchProducts } from "@/lib/timbu";
+import { notFound } from "next/navigation";
 import Product from "./product";
 
 export async function generateStaticParams() {
@@ -18,8 +19,7 @@ export default async function Page({ params: { id } }: { params: { id: string } 
   const product = products.find((p) => p.id === id);
 
   if (!product) {
-    // TODO: not found
-    return <div>not found</div>;
+    notFound();
   }
 
   return <Product product={product} />;

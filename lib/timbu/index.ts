@@ -10,7 +10,7 @@ type ProductsResult = {
   items: Product[];
 };
 
-export const fetchProducts = async (extraParams: Record<string, any>) => {
+export const fetchProducts = async (extraParams: Record<string, any> = {}) => {
   const params = new URLSearchParams({ ...DEFAULT_PARAMS, ...extraParams });
   const res = await fetch(`${API_ROOT_URL}/products?${params}`);
 
