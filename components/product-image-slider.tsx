@@ -1,5 +1,5 @@
 "use client";
-// TODO: toaster when you add to cart
+
 import { BLUR_DATA_URL } from "@/lib";
 import { API_IMAGE_ROOT_URL } from "@/lib/timbu/constants";
 import { Product } from "@/lib/timbu/types";

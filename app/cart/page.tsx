@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 
 export default function Cart() {
   const cart = useAppContext((state) => state.cart);
+  const clearCart = useAppContext((state) => state.clearCart);
   const deliveryFee = useAppContext((state) => state.deliveryFee);
   const products = Object.values(cart.items);
   const subtotal = products.reduce(
@@ -24,7 +25,7 @@ export default function Cart() {
     <>
       <Header className="!hidden !md:flex" />
 
-      <main className="w-full md:max-w-[676px] min-h-screen md:min-h-auto mx-auto md:my-6 bg-white p-6 md:px-[4.5rem] stack gap-4 md:rounded-3xl">
+      <main className="w-full md:max-w-[676px] min-h-screen md:min-h-0 mx-auto md:my-6 bg-white p-6 md:px-[4.5rem] stack gap-4 md:rounded-3xl">
         <header className="stack gap-1">
           <button
             onClick={() => router.back()}
@@ -65,12 +66,20 @@ export default function Cart() {
               </p>
             </div>
 
-            <Link
-              href="/checkout"
-              className="px-4 py-3 bg-purple-3 text-white font-semibold rounded-lg text-center hover:bg-purple-3/90 hover:box-shadow-purple"
-            >
-              Checkout
-            </Link>
+            <div className="stack gap-2">
+              <Link
+                href="/checkout"
+                className="px-4 py-3 bg-purple-3 text-white font-semibold rounded-lg text-center hover:bg-purple-3/90 hover:box-shadow-purple"
+              >
+                Checkout
+              </Link>
+              <button
+                onClick={() => clearCart()}
+                className="px-4 py-3 bg-orange-700 text-white font-semibold rounded-lg text-center hover:bg-orange-700/90 hover:box-shadow-purple"
+              >
+                Clear cart
+              </button>
+            </div>
           </div>
         ) : (
           <div className="py-40">
