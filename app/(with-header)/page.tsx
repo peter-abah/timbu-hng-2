@@ -16,7 +16,7 @@ export default async function Home({ searchParams }: { searchParams: { page?: st
     total,
     size,
   } = await fetchProducts({ page: searchParams.page || 1, size: PAGE_SIZE });
-  const productsByCategory = groupBy(products, (p) => p.categories[0]?.name || "uncategorized");
+  const productsByCategory = groupBy(products, (p) => p.categories?.[0]?.name || "uncategorized");
   const categories = Object.keys(productsByCategory);
 
   return (

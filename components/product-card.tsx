@@ -33,7 +33,7 @@ export default function ProductCard({ product }: Props) {
     <li className="stack gap-2 w-full">
       <Link href={`/products/${product.id}`} className="bg-white p-4 rounded-xl w-full">
         <div className="relative w-full aspect-square">
-          <Image src={imageLink} alt={product.name} fill />
+          <Image src={imageLink} alt={product.name} className="object-contain" fill />
         </div>
       </Link>
 

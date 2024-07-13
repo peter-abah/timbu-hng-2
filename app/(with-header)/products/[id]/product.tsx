@@ -65,7 +65,7 @@ export default function Product({ product }: { product: TProduct }) {
         <div className="stack gap-6">
           {/* Replace with category */}
           <div className="stack gap-4">
-            {categories[0] && (
+            {categories?.[0] && (
               <p className="text-sm md:text-base opacity-70">{titleCase(categories[0].name)}</p>
             )}
             <h1 className="text-[2rem] font-semibold">{name}</h1>

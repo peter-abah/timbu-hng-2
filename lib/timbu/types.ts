@@ -2,7 +2,7 @@ export type Product = {
   id: string;
   name: string;
   description?: string;
-  categories: { name: string }[];
+  categories?: { name: string }[];
   photos: Array<{
     url: string;
     position: string;

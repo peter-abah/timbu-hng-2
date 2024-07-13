@@ -40,7 +40,7 @@ export default function CartProduct({ product }: Props) {
         </div>
         <div className="stack justify-between">
           <div className="stack md:gap-1">
-            {product.categories[0] && (
+            {product.categories?.[0] && (
               <p className="text-[10px] md:text-sm">{titleCase(product.categories[0].name)}</p>
             )}
             <Link

@@ -12,7 +12,7 @@ type ProductsResult = {
 
 export const fetchProducts = async (extraParams: Record<string, any> = {}) => {
   const params = new URLSearchParams({ ...DEFAULT_PARAMS, ...extraParams });
-  const res = await fetch(`${API_ROOT_URL}/products?${params}`);
+  const res = await fetch(`${API_ROOT_URL}/products?${params} `);
 
   if (!res.ok) {
     throw Error("Error fetching products");
