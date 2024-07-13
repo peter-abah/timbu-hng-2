@@ -15,9 +15,7 @@ const transformProduct = (product: ProductData) => {
   const result = {
     ...product,
     current_price:
-      typeof product.current_price === "number"
-        ? product.current_price
-        : product.current_price,
+      typeof product.current_price === "number" ? product.current_price : product.current_price,
   };
   return result as Product;
 };
@@ -39,11 +37,12 @@ export const fetchProduct = async (productId: string) => {
   const res = await fetch(`${API_ROOT_URL}/products/${productId}?${params}`);
 
   if (!res.ok) {
-    throw Error("Error fetching products");
+    if (res.status === 404) return null;
+
+    throw Error("Error fetching product");
   }
 
-  const data = (await res.json()) as Product | null;
-  if (!data) return null;
+  const data = (await res.json()) as Product;
 
   return transformProduct(data);
 };
