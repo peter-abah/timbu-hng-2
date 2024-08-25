@@ -15,7 +15,7 @@ export default function Checkout() {
   return (
     <main className="min-h-screen max-w-[1440px] w-full mx-auto">
       <div className="relative lg:pl-[50%] w-full">
-        <section className="hidden lg:block top-0 min-[1440px]:left-[calc((100vw-1440px)/2)] pt-[72px] px-[5.4%] fixed w-[50%] max-w-[720px]">
+        <section className="hidden lg:block left-0 top-0 min-[1440px]:left-[calc((100vw-1440px)/2)] pt-[72px] px-[5.4%] fixed w-[50%] max-w-[720px]">
           <div className="w-full stack gap-1">
             <h2 className="text-xl font-semibold">Order summary</h2>
             <div className="stack gap-4 p-4 bg-white border-gray-1 border rounded-lg">

@@ -155,7 +155,7 @@ export default function CheckoutForm() {
             </div>
           </div>
 
-          <div className="w-full stack gap-1 md:hidden">
+          <div className="w-full stack gap-1 lg:hidden">
             <h2 className="text-xl font-semibold">Order summary</h2>
             <div className="stack gap-4 p-4 bg-bg-main border-gray-1 border rounded-lg">
               <p className="flex justify-between">
